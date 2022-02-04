@@ -71,7 +71,7 @@ public class Paciente {
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false, unique = true)
 	private Date fechanacimiento;
-
+//dsddsdsd
 
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
