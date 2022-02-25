@@ -28,8 +28,13 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name = "pacientes")
+@Data @AllArgsConstructor @NoArgsConstructor
 public class Paciente {
 	
 	@Id
@@ -57,21 +62,17 @@ public class Paciente {
 	@Column(nullable = false)
 	private String provincia;
 	
-	@NotEmpty(message = "no puede estar vacio")
 	@Size(min = 5, message = "el tamaño minimo tiene que ser de 5")
 	@Column(nullable = false)
-	private Long codigopostal;
+	private String codigopostal;
 	
-	@NotEmpty(message = "no puede estar vacio")
 	@Size(min = 9, message = "el tamaño minimo tiene que ser de 9")
 	@Column(nullable = false, unique = true)
-	private Long telefono;
+	private String telefono;
 	
-	@NotEmpty(message = "no puede estar vacio")
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false, unique = true)
 	private Date fechanacimiento;
-//dsddsdsd
 
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -80,85 +81,7 @@ public class Paciente {
 	
 	private static final long serialVersionUID = 1L;
 
-	public Long getCodigo() {
-		return codigo;
-	}
 
-	public void setCodigo(Long codigo) {
-		this.codigo = codigo;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getApellido() {
-		return apellido;
-	}
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-
-	public String getDireccion() {
-		return direccion;
-	}
-
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
-	}
-
-	public String getPoblacion() {
-		return poblacion;
-	}
-
-	public void setPoblacion(String poblacion) {
-		this.poblacion = poblacion;
-	}
-
-	public String getProvincia() {
-		return provincia;
-	}
-
-	public void setProvincia(String provincia) {
-		this.provincia = provincia;
-	}
-
-	public Long getCodigopostal() {
-		return codigopostal;
-	}
-
-	public void setCodigopostal(Long codigopostal) {
-		this.codigopostal = codigopostal;
-	}
-
-	public Long getTelefono() {
-		return telefono;
-	}
-
-	public void setTelefono(Long telefono) {
-		this.telefono = telefono;
-	}
-
-	public Date getFechanacimiento() {
-		return fechanacimiento;
-	}
-
-	public void setFechanacimiento(Date fechanacimiento) {
-		this.fechanacimiento = fechanacimiento;
-	}
-
-	public List<Ingreso> getIngresos() {
-		return ingresos;
-	}
-
-	public void setIngresos(List<Ingreso> ingresos) {
-		this.ingresos = ingresos;
-	}
 	
 	
 	

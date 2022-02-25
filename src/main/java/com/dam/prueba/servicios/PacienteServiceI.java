@@ -12,4 +12,6 @@ public interface PacienteServiceI {
 	public void aniadirPaciente(final Paciente paciente);
 
 	public void actualizarPaciente(final Paciente paciente);
+
+	public void eliminarPacientePorId(long IdPaciente);
 }

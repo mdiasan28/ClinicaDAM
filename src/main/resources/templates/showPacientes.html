@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>CONCESIONARIO</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	</head>
+	<body class="card-body">
+		<div class="card text-white bg-dark mb-3">
+		  	<div class="card-header">Coches</div>
+			<div class="card-body">
+				<table class="table table-striped table-dark">
+					<thead class="thead-light">
+						<tr>
+							<th scope="col">Codigo</th>
+							<th scope="col">Nombre</th>
+							<th scope="col">Apellido</th>
+							<th scope="col">Codigo Postal</th>
+							<th scope="col">Direccion</th>
+							<th scope="col">Fecha Nacimiento</th>
+							<th scope="col">Población</th>
+							<th scope="col">Provincia</th>
+							<th scope="col">Teléfono</th>
+							<th scope="col" th:hidden="${btnDropPacienteEnabled}">Eliminar</th>
+						</tr>
+					</thead>
+					<tbody>
+						<th:block th:each="paciente : ${PacientesListView}">
+							<tr>
+								<td scope="row" th:text="${paciente.codigo}" />
+								<td scope="row" th:text="${paciente.nombre}" />
+								<td scope="row" th:text="${paciente.apellido}" />
+								<td scope="row" th:text="${paciente.codigopostal}" />
+								<td scope="row" th:text="${paciente.direccion}" />
+								<td scope="row" th:text="${paciente.fechanacimiento}" />
+								<td scope="row" th:text="${paciente.poblacion}" />
+								<td scope="row" th:text="${paciente.provincia}" />
+								<td scope="row" th:text="${paciente.telefono}" />
+								<td scope="row" th:hidden="${btnDropPacienteEnabled}">
+									<form action="actDropPaciente" method="post">
+										<button th:disabled="${btnDropPacienteEnabled}" type="submit"
+											id="btnDropPaciente" name="pacienteId" th:value="${paciente.codigo}"
+											class="btn btn-danger">▼</button>
+									</form>
+								</td>
+							</tr>
+						</th:block>
+					</tbody>
+				</table>
+				<a class="btn btn-primary" th:href="@{index}" id="aBtnReturn" role="button">Volver</a>
+			</div>
+		</div>
+	</body>
+</html>

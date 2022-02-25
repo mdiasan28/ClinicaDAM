@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>CONCESIONARIO</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	</head>
+	<body class="card-body">
+
+		<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+		    <a class="navbar-brand" th:href="@{/pacientesView}" role="button">Ver todos los pacientes.</a>
+			<a class="navbar-brand" th:href="@{/newPacienteView}" role="button">Añadir Paciente.</a>
+		</nav>
+	
+		<div class="card text-white bg-dark mb-3">
+		  	<div class="card-body">
+				<h3>Bienvenid@ al sistema.</h3>
+				<h4>Por favor, seleccione una acción.</h4>
+			</div>
+		</div>
+</body>
+</html>

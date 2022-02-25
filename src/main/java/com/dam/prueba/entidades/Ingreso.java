@@ -38,51 +38,17 @@ public class Ingreso {
 
 	@NotEmpty(message = "no puede estar vacio")
 	@Column(nullable = false)
-	private Long numerohabitacion;
+	private String numerohabitacion;
 
 	@NotEmpty(message = "no puede estar vacio")
 	@Column(nullable = false)
 	private String cama;
 	
-	@NotEmpty(message = "no puede estar vacio")
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Date fechaingreso;
 	
 	
 	private static final long serialVersionUID = 1L;
-
-	public Long getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(Long codigo) {
-		this.codigo = codigo;
-	}
-
-	public Long getNumerohabitacion() {
-		return numerohabitacion;
-	}
-
-	public void setNumerohabitacion(Long numerohabitacion) {
-		this.numerohabitacion = numerohabitacion;
-	}
-
-	public String getCama() {
-		return cama;
-	}
-
-	public void setCama(String cama) {
-		this.cama = cama;
-	}
-
-	public Date getFechaingreso() {
-		return fechaingreso;
-	}
-
-	public void setFechaingreso(Date fechaingreso) {
-		this.fechaingreso = fechaingreso;
-	}
 	
-
 }
