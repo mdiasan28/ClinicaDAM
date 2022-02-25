@@ -36,6 +36,36 @@ public class MedicoController {
 
 		return "showMedicos";
 	}
+	
+	@GetMapping("/editMedicosView")
+	public String editarMedicos(String medicoId, Model model) {
+
+		// Obtención de pacientes
+		Medico m  = medicoServiceI.findMedicoByID(Long.valueOf(medicoId));
+		
+
+		// Carga de datos al modelo
+		model.addAttribute("nombre", m.getNombre());
+		model.addAttribute("apellido", m.getApellido());
+		model.addAttribute("telefono", m.getTelefono());
+		model.addAttribute("especialidad", m.getEspecialidad());
+		model.addAttribute("MedicoID", m.getCodigo());
+
+		return "editMedico";
+	}
+	
+	@GetMapping("/actEditMedico")
+	public String editarMedico(@Valid @ModelAttribute Medico medicomodelo, BindingResult result) throws Exception {
+				
+		if (result.hasErrors()) {
+			throw new Exception("Parámetros de matriculación erróneos");
+		}
+
+		// Obtención de pacientes
+		medicoServiceI.actualizarMedico(medicomodelo);
+
+		return "redirect:showMedicosView";
+	}
 
 	@PostMapping("/actDropMedico")
 	public String eliminarMedico(@RequestParam String medicoId, Model model) {

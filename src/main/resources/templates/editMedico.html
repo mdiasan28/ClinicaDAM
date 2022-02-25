@@ -4,10 +4,10 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Clínica</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
@@ -64,31 +64,35 @@
 		</div>
 	</nav>
 	<div class="text-white bg-dark mb-3">
-		<div class="card-header">Datos del nuevo médico</div>
+		<div class="card-header">Datos del médico</div>
 		<div class="card-body">
-			<form th:action="@{/actAddMedico}" th:object="${newMedico}" method="POST">
+			<form th:action="@{/actEditMedico}" th:object="${medicomodelo}">
 				<div class="form-group">
+				
+				<input type="hidden" required="required" class="form-control" id="inpCodigo" name="codigo"
+						th:value="${MedicoID}">
+						
 					<label for="inpName">Nombre</label>
 					<input type="text" required="required" class="form-control" id="inpName" name="nombre"
-						placeholder="Nombre.">
+						th:value="${nombre}">
 				</div>
 				<div class="form-group">
 					<label for="inpApellido">Apellido</label>
 					<input type="text" required="required" class="form-control" id="inpApellido" name="apellido"
-						placeholder="Apellido.">
+						th:value="${apellido}">
 				</div>
 				<div class="form-group">
 					<label for="inpPhone">Teléfono</label>
 					<input required="required" type="text" class="form-control" id="inpPhone" name="telefono"
-						placeholder="Teléfono.">
+						th:value="${telefono}">
 				</div>
 				<div class="form-group">
 					<label for="inpSpecial">Especialidad</label>
 					<input required="required" type="text" class="form-control" id="inpSpecial" name="especialidad"
-						placeholder="Especialidad.">
+						th:value="${especialidad}">
 				</div>
 
-				<button type="submit" name="btnAddMedico" class="btn btn-success">Añadir</button>
+				<button type="submit" id="btnEditMedico" name="medicoId" class="btn btn-success">Editar</button>
 				<a class="btn btn-danger" href="index" role="button" id="aBtnReturn">Cancelar</a>
 			</form>
 		</div>

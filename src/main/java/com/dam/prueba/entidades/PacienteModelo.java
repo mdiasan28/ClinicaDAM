@@ -36,6 +36,8 @@ import lombok.NoArgsConstructor;
 @Data @AllArgsConstructor @NoArgsConstructor
 public class PacienteModelo {
 	
+	private Long codigo;
+	
 	private String nombre;
 
 

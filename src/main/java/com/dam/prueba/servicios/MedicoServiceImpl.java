@@ -1,6 +1,7 @@
 package com.dam.prueba.servicios;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,5 +37,13 @@ public class MedicoServiceImpl implements MedicoServiceI{
 		medicoRepositorio.deleteById(IdPaciente);
 		
 	}
+
+
+	@Override
+	public Medico findMedicoByID(long idMedico) {
+		Medico m = medicoRepositorio.findMedicoByID(idMedico);
+		return m;
+	}
+
 
 }

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dam.prueba.entidades.Medico;
 import com.dam.prueba.entidades.Paciente;
 import com.dam.prueba.entidades.PacienteModelo;
 import com.dam.prueba.servicios.PacienteServiceI;
@@ -48,6 +49,54 @@ public class PacienteController {
 		return "showPacientes";
 	}
 
+	@GetMapping("/editPacientesView")
+	public String editarPacientes(String pacienteId, Model model) {
+
+		// Obtención de pacientes
+		Paciente p = pacienteServiceI.finfPacienteById(Long.valueOf(pacienteId));
+
+		// Carga de datos al modelo
+		model.addAttribute("nombre", p.getNombre());
+		model.addAttribute("apellido", p.getApellido());
+		model.addAttribute("cp", p.getCodigopostal());
+		model.addAttribute("direccion", p.getDireccion());
+		model.addAttribute("fechanacimiento", p.getFechanacimiento());
+		model.addAttribute("poblacion", p.getPoblacion());
+		model.addAttribute("provincia", p.getProvincia());
+		model.addAttribute("telefono", p.getTelefono());
+		model.addAttribute("PacienteID", p.getCodigo());
+
+		return "editPaciente";
+	}
+
+	@GetMapping("/actEditPaciente")
+	public String editarMedico(@Valid @ModelAttribute PacienteModelo Pacientemodelo, BindingResult result) throws Exception {
+
+		Paciente p = new Paciente();
+
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = formatter.parse(Pacientemodelo.getFechanacimiento());
+
+		p.setCodigo(Pacientemodelo.getCodigo());
+		p.setNombre(Pacientemodelo.getNombre());
+		p.setApellido(Pacientemodelo.getApellido());
+		p.setDireccion(Pacientemodelo.getDireccion());
+		p.setPoblacion(Pacientemodelo.getPoblacion());
+		p.setProvincia(Pacientemodelo.getProvincia());
+		p.setCodigopostal(Pacientemodelo.getCodigopostal());
+		p.setTelefono(Pacientemodelo.getTelefono());
+		p.setFechanacimiento(date);
+
+		if (result.hasErrors()) {
+			throw new Exception("Parámetros de matriculación erróneos");
+		}
+
+		// Obtención de pacientes
+		pacienteServiceI.actualizarPaciente(p);
+
+		return "redirect:showPacientesView";
+	}
+
 	@PostMapping("/actDropPaciente")
 	public String eliminarPaciente(@RequestParam String pacienteId, Model model) {
 
@@ -58,16 +107,15 @@ public class PacienteController {
 
 	}
 
-	
-
 	@PostMapping("/actAddPaciente")
-	private String aniadirPaciente(@Valid @ModelAttribute PacienteModelo Pacientemodelo, BindingResult result) throws Exception {
+	private String aniadirPaciente(@Valid @ModelAttribute PacienteModelo Pacientemodelo, BindingResult result)
+			throws Exception {
 
 		Paciente p = new Paciente();
-		
+
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = formatter.parse(Pacientemodelo.getFechanacimiento());
-		
+
 		p.setNombre(Pacientemodelo.getNombre());
 		p.setApellido(Pacientemodelo.getApellido());
 		p.setDireccion(Pacientemodelo.getDireccion());
@@ -76,7 +124,7 @@ public class PacienteController {
 		p.setCodigopostal(Pacientemodelo.getCodigopostal());
 		p.setTelefono(Pacientemodelo.getTelefono());
 		p.setFechanacimiento(date);
-		
+
 		if (result.hasErrors()) {
 			throw new Exception("Parámetros de matriculación erróneos");
 		} else {

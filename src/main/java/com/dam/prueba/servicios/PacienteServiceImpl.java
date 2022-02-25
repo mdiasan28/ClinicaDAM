@@ -33,6 +33,12 @@ public class PacienteServiceImpl implements PacienteServiceI{
 	public void eliminarPacientePorId(long IdPaciente) {
 		pacienteRepositorio.deleteById(IdPaciente);	
 	}
+
+	@Override
+	public Paciente finfPacienteById(long IdPaciente) {
+		Paciente p = pacienteRepositorio.findMedicoByID(IdPaciente);
+		return p;
+	}
 	
 
 }

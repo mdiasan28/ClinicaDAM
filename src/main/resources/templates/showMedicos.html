@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Clínica</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
@@ -20,7 +21,7 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active">
-					<a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="index">Inicio <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -62,42 +63,48 @@
 			</ul>
 		</div>
 	</nav>
-	
-		<div class="text-white bg-dark mb-3">
-		  	<div class="card-header">Médicos</div>
-			<div class="card-body">
-				<table class="table table-striped table-dark">
-					<thead class="thead-light">
+
+	<div class="text-white bg-dark mb-3">
+		<div class="card-header">Médicos</div>
+		<div class="card-body">
+			<table class="table table-striped table-dark">
+				<thead class="thead-light">
+					<tr>
+						<th scope="col">Codigo</th>
+						<th scope="col">Nombre</th>
+						<th scope="col">Apellido</th>
+						<th scope="col">Teléfono</th>
+						<th scope="col">Especialidad</th>
+						<th scope="col" th:hidden="${btnDropMedicoEnabled}">Eliminar</th>
+						<th scope="col" th:hidden="${btnDropMedicoEnabled}">Editar</th>
+					</tr>
+				</thead>
+				<tbody>
+					<th:block th:each="medico : ${MedicosListView}">
 						<tr>
-							<th scope="col">Codigo</th>
-							<th scope="col">Nombre</th>
-							<th scope="col">Apellido</th>
-							<th scope="col">Teléfono</th>
-							<th scope="col">Especialidad</th>
-							<th scope="col" th:hidden="${btnDropMedicoEnabled}">Eliminar</th>
+							<td scope="row" th:text="${medico.codigo}" />
+							<td scope="row" th:text="${medico.nombre}" />
+							<td scope="row" th:text="${medico.apellido}" />
+							<td scope="row" th:text="${medico.telefono}" />
+							<td scope="row" th:text="${medico.especialidad}" />
+							<td scope="row" th:hidden="${btnDropMedicoEnabled}">
+								<form action="actDropMedico" method="post">
+									<button th:disabled="${btnDropMedicoEnabled}" type="submit" id="btnDropMedico"
+										name="medicoId" th:value="${medico.codigo}" class="btn btn-danger">▼</button>
+								</form>
+							</td>
+							<td scope="row">
+								<form action="editMedicosView">
+									<button type="submit" id="btnEditMedico" name="medicoId" th:value="${medico.codigo}"
+										class="btn btn-warning">Editar</button>
+								</form>
+							</td>
 						</tr>
-					</thead>
-					<tbody>
-						<th:block th:each="medico : ${MedicosListView}">
-							<tr>
-								<td scope="row" th:text="${medico.codigo}" />
-								<td scope="row" th:text="${medico.nombre}" />
-								<td scope="row" th:text="${medico.apellido}" />
-								<td scope="row" th:text="${medico.telefono}" />
-								<td scope="row" th:text="${medico.especialidad}" />
-								<td scope="row" th:hidden="${btnDropMedicoEnabled}">
-									<form action="actDropMedico" method="post">
-										<button th:disabled="${btnDropMedicoEnabled}" type="submit"
-											id="btnDropMedico" name="medicoId" th:value="${medico.codigo}"
-											class="btn btn-danger">▼</button>
-									</form>
-								</td>
-							</tr>
-						</th:block>
-					</tbody>
-				</table>
-				<a class="btn btn-primary" th:href="@{index}" id="aBtnReturn" role="button">Volver</a>
-			</div>
+					</th:block>
+				</tbody>
+			</table>
 		</div>
-	</body>
+	</div>
+</body>
+
 </html>
