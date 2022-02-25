@@ -63,11 +63,10 @@
 			</ul>
 		</div>
 	</nav>
-	
 	<div class="text-white bg-dark mb-3">
-		<div class="card-header">Datos del nuevo paciente</div>
+		<div class="card-header">Datos del nuevo médico</div>
 		<div class="card-body">
-			<form th:action="@{/actAddPaciente}" th:object="${newPaciente}" method="POST">
+			<form th:action="@{/actAddMedico}" th:object="${newMedico}" method="POST">
 				<div class="form-group">
 					<label for="inpName">Nombre</label>
 					<input type="text" required="required" class="form-control" id="inpName" name="nombre"
@@ -79,37 +78,17 @@
 						placeholder="Apellido.">
 				</div>
 				<div class="form-group">
-					<label for="inpCP">Código Postal</label>
-					<input type="number" required="required" class="form-control" id="inpCP" name="codigopostal"
-						placeholder="Código Postal.">
-				</div>
-				<div class="form-group">
-					<label for="inpDireccion">Dirección</label>
-					<input required="required" type="text" class="form-control" id="inpDireccion" name="direccion"
-						placeholder="Dirección.">
-				</div>
-				<div class="form-group">
-					<label for="inpDate">Fecha Nacimiento</label>
-					<input required="required" type="date" class="form-control" id="inpDate" name="fechanacimiento"
-						placeholder="Dirección.">
-				</div>
-				<div class="form-group">
-					<label for="inpPoblacion">Población</label>
-					<input required="required" type="text" class="form-control" id="inpPoblacion" name="poblacion"
-						placeholder="Población.">
-				</div>
-				<div class="form-group">
-					<label for="inpProvincia">Provincia</label>
-					<input required="required" type="text" class="form-control" id="inpProvincia" name="provincia"
-						placeholder="Provincia.">
-				</div>
-				<div class="form-group">
 					<label for="inpPhone">Teléfono</label>
 					<input required="required" type="text" class="form-control" id="inpPhone" name="telefono"
 						placeholder="Teléfono.">
 				</div>
+				<div class="form-group">
+					<label for="inpSpecial">Especialidad</label>
+					<input required="required" type="text" class="form-control" id="inpSpecial" name="especialidad"
+						placeholder="Especialidad.">
+				</div>
 
-				<button type="submit" name="btnAddPaciente" class="btn btn-success">Añadir</button>
+				<button type="submit" name="btnAddMedico" class="btn btn-success">Añadir</button>
 				<a class="btn btn-primary" href="index" role="button" id="aBtnReturn">Volver</a>
 			</form>
 		</div>

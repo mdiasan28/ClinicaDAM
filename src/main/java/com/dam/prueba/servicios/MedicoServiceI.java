@@ -12,4 +12,7 @@ public interface MedicoServiceI {
 	public void aniadirMedico(final Medico medico);
 
 	public void actualizarMedico(final Medico medico);
+	
+	public void eliminarMedicoPorId(long IdPaciente);
+	
 }

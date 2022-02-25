@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Clínica</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
@@ -64,57 +63,41 @@
 		</div>
 	</nav>
 	
-	<div class="text-white bg-dark mb-3">
-		<div class="card-header">Datos del nuevo paciente</div>
-		<div class="card-body">
-			<form th:action="@{/actAddPaciente}" th:object="${newPaciente}" method="POST">
-				<div class="form-group">
-					<label for="inpName">Nombre</label>
-					<input type="text" required="required" class="form-control" id="inpName" name="nombre"
-						placeholder="Nombre.">
-				</div>
-				<div class="form-group">
-					<label for="inpApellido">Apellido</label>
-					<input type="text" required="required" class="form-control" id="inpApellido" name="apellido"
-						placeholder="Apellido.">
-				</div>
-				<div class="form-group">
-					<label for="inpCP">Código Postal</label>
-					<input type="number" required="required" class="form-control" id="inpCP" name="codigopostal"
-						placeholder="Código Postal.">
-				</div>
-				<div class="form-group">
-					<label for="inpDireccion">Dirección</label>
-					<input required="required" type="text" class="form-control" id="inpDireccion" name="direccion"
-						placeholder="Dirección.">
-				</div>
-				<div class="form-group">
-					<label for="inpDate">Fecha Nacimiento</label>
-					<input required="required" type="date" class="form-control" id="inpDate" name="fechanacimiento"
-						placeholder="Dirección.">
-				</div>
-				<div class="form-group">
-					<label for="inpPoblacion">Población</label>
-					<input required="required" type="text" class="form-control" id="inpPoblacion" name="poblacion"
-						placeholder="Población.">
-				</div>
-				<div class="form-group">
-					<label for="inpProvincia">Provincia</label>
-					<input required="required" type="text" class="form-control" id="inpProvincia" name="provincia"
-						placeholder="Provincia.">
-				</div>
-				<div class="form-group">
-					<label for="inpPhone">Teléfono</label>
-					<input required="required" type="text" class="form-control" id="inpPhone" name="telefono"
-						placeholder="Teléfono.">
-				</div>
-
-				<button type="submit" name="btnAddPaciente" class="btn btn-success">Añadir</button>
-				<a class="btn btn-primary" href="index" role="button" id="aBtnReturn">Volver</a>
-			</form>
+		<div class="text-white bg-dark mb-3">
+		  	<div class="card-header">Médicos</div>
+			<div class="card-body">
+				<table class="table table-striped table-dark">
+					<thead class="thead-light">
+						<tr>
+							<th scope="col">Codigo</th>
+							<th scope="col">Nombre</th>
+							<th scope="col">Apellido</th>
+							<th scope="col">Teléfono</th>
+							<th scope="col">Especialidad</th>
+							<th scope="col" th:hidden="${btnDropMedicoEnabled}">Eliminar</th>
+						</tr>
+					</thead>
+					<tbody>
+						<th:block th:each="medico : ${MedicosListView}">
+							<tr>
+								<td scope="row" th:text="${medico.codigo}" />
+								<td scope="row" th:text="${medico.nombre}" />
+								<td scope="row" th:text="${medico.apellido}" />
+								<td scope="row" th:text="${medico.telefono}" />
+								<td scope="row" th:text="${medico.especialidad}" />
+								<td scope="row" th:hidden="${btnDropMedicoEnabled}">
+									<form action="actDropMedico" method="post">
+										<button th:disabled="${btnDropMedicoEnabled}" type="submit"
+											id="btnDropMedico" name="medicoId" th:value="${medico.codigo}"
+											class="btn btn-danger">▼</button>
+									</form>
+								</td>
+							</tr>
+						</th:block>
+					</tbody>
+				</table>
+				<a class="btn btn-primary" th:href="@{index}" id="aBtnReturn" role="button">Volver</a>
+			</div>
 		</div>
-	</div>
-</body>
-
-
+	</body>
 </html>

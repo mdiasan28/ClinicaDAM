@@ -15,17 +15,29 @@ public class SystemController {
 		return "index";
 	}
 	
-	//Redirecciona al controlador de gestión de coches
+	//Redirecciona al controlador de gestión de pacientes
 	@GetMapping("/pacientesView")
-	public String redirectToCarDealershipController() {
+	public String redirectToPacienteController() {
 		return "redirect:showPacientesView";
 	}
+	
+	//Redirecciona al controlador de gestión de medicos
+		@GetMapping("/medicosView")
+		public String redirectToMedicoController() {
+			return "redirect:showMedicosView";
+		}
 	
 	
 	//Redirecciona a la plantilla de insercción
 	@GetMapping("/newPacienteView")
-	public String redirectToNewCarTemplate() {
+	public String redirectToNewPacienteTemplate() {
 		return "newPaciente";
 	}
+	
+	//Redirecciona a la plantilla de insercción
+		@GetMapping("/newMedicoView")
+		public String redirectToNewMedicoTemplate() {
+			return "newMedico";
+		}
 
 }

@@ -31,4 +31,10 @@ public class MedicoServiceImpl implements MedicoServiceI{
 		
 	}
 
+	@Override
+	public void eliminarMedicoPorId(long IdPaciente) {
+		medicoRepositorio.deleteById(IdPaciente);
+		
+	}
+
 }
