@@ -58,9 +58,8 @@ public class Medico {
 	private String especialidad;
 
 
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "medico_id")
+	@JsonIgnoreProperties(value={"medico", "hibernateLazyInitializer", "handler"}, allowSetters=true)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "medico", cascade = CascadeType.ALL)
 	private List<Ingreso> ingresos;	
 	
 	private static final long serialVersionUID = 1L;				

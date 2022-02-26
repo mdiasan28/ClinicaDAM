@@ -11,10 +11,10 @@ import com.dam.prueba.entidades.Ingreso;
 @Repository
 public interface IngresoRepositorio extends JpaRepository<Ingreso, Long> {
 	
-	 @Query(value = "SELECT * FROM ingresos WHERE paciente_id = ?", nativeQuery = true)
-	 List <Ingreso> findIngresoByPaciente(String idPaciente);
+	 @Query(value = "SELECT * FROM ingresos WHERE paciente_codigo = ?", nativeQuery = true)
+	 List <Ingreso> findIngresosByPaciente(long idPaciente);
 	 
-	 @Query(value = "SELECT * FROM ingresos WHERE medico_id = ?", nativeQuery = true)
-	 List <Ingreso> findIngresoByMedico(String idMedico);
+	 @Query(value = "SELECT * FROM ingresos WHERE medico_codigo = ?", nativeQuery = true)
+	 List <Ingreso> findIngresosByMedico(long idMedico);
 
 }

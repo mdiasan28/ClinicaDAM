@@ -1,17 +1,21 @@
 package com.dam.prueba.servicios;
 
 
+import java.util.List;
+
 import com.dam.prueba.entidades.Ingreso;
 
 
 public interface IngresoServiceI {
+	
+	public List<Ingreso> obtenerTodosIngresos();
 
 	public void aniadirIngreso(final Ingreso ingreso);
 
 
-	void findIngresoByMedico(String idMedico);
+	List<Ingreso> findIngresosByMedico(long idMedico);
 
 
-	void findIngresoByPaciente(String idCliente);
+	List<Ingreso> findIngresosByPaciente(long idCliente);
 
 }

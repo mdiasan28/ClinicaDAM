@@ -32,34 +32,21 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "ingresos")
 @Data @AllArgsConstructor @NoArgsConstructor
-public class Ingreso {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class IngresoModelo {
+
 	private Long codigo;
 
-	@NotEmpty(message = "no puede estar vacio")
-	@Column(nullable = false)
+
 	private String numerohabitacion;
 
-	@NotEmpty(message = "no puede estar vacio")
-	@Column(nullable = false)
 	private String cama;
 	
-	@Temporal(TemporalType.DATE)
-	@Column(nullable = false)
-	private Date fechaingreso;
+	private String fechaingreso;
 	
-	@JsonIgnoreProperties(value={"ingresos", "hibernateLazyInitializer", "handler"}, allowSetters=true)
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Medico medico;
+	private String medico_codigo;
 	
-	@JsonIgnoreProperties(value={"ingresos", "hibernateLazyInitializer", "handler"}, allowSetters=true)
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Paciente paciente;
+	private String paciente_codigo;
 	
 	
 	private static final long serialVersionUID = 1L;

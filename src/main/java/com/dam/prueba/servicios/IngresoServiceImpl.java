@@ -1,5 +1,7 @@
 package com.dam.prueba.servicios;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,16 +19,21 @@ public class IngresoServiceImpl implements IngresoServiceI{
 		ingresoRepositorio.save(ingreso);
 		
 	}
-	
+
 	@Override
-	public void findIngresoByPaciente(String idPaciente) {
-		ingresoRepositorio.findIngresoByPaciente(idPaciente);
+	public List<Ingreso> obtenerTodosIngresos() {	
+		return ingresoRepositorio.findAll();
+	}
+
+	@Override
+	public List<Ingreso> findIngresosByMedico(long idMedico) {
+		return ingresoRepositorio.findIngresosByMedico(idMedico);
 		
 	}
-	
+
 	@Override
-	public void findIngresoByMedico(String idMedico) {
-		ingresoRepositorio.findIngresoByMedico(idMedico);
+	public List<Ingreso> findIngresosByPaciente(long idPaciente) {
+		return ingresoRepositorio.findIngresosByPaciente(idPaciente);
 		
 	}
 

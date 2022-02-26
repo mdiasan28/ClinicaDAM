@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 public class MedicoModelo {
 
 
+	private String codigo;
+	
 	private String nombre;
 
 

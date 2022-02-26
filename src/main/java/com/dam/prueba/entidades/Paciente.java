@@ -74,9 +74,8 @@ public class Paciente {
 	@Column(nullable = false, unique = true)
 	private Date fechanacimiento;
 
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "paciente_id")
+	@JsonIgnoreProperties(value={"paciente", "hibernateLazyInitializer", "handler"}, allowSetters=true)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "paciente", cascade = CascadeType.ALL)
 	private List<Ingreso> ingresos;	
 	
 	private static final long serialVersionUID = 1L;
