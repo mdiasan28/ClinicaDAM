@@ -76,7 +76,6 @@
 						<th scope="col">Fecha Ingreso</th>
 						<th scope="col">Medico</th>
 						<th scope="col">Paciente</th>
-						<th scope="col" th:hidden="${btnDropPacienteEnabled}">Eliminar</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -88,13 +87,6 @@
 							<td scope="row" th:text="${ingreso.fechaingreso}" />
 							<td scope="row" th:text="${ingreso.medico.nombre}" />
 							<td scope="row" th:text="${ingreso.paciente.nombre}" />
-							<td scope="row" th:hidden="${btnDropPacienteEnabled}">
-								<form action="actDropPaciente" method="post">
-									<button th:disabled="${btnDropIngresoEnabled}" type="submit" id="btnDropIngreso"
-										name="ingresoId" th:value="${ingreso.codigo}"
-										class="btn btn-danger">▼</button>
-								</form>
-							</td>
 						</tr>
 					</th:block>
 				</tbody>

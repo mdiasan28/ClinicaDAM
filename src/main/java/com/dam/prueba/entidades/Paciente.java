@@ -42,7 +42,7 @@ public class Paciente {
 	private Long codigo;
 
 	@NotEmpty(message = "no puede estar vacio")
-	@Size(min = 4, message = "el tamaño minimo tiene que ser de 4")
+	@Size(min = 3, message = "el tamaño minimo tiene que ser de 3")
 	@Column(nullable = false)
 	private String nombre;
 
