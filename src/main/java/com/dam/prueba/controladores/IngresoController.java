@@ -143,5 +143,15 @@ public class IngresoController {
 
 		return "redirect:showIngresosView";
 	}
+	
+	@PostMapping("/actDropIngreso")
+	public String eliminarIngreso(@RequestParam String ingresoId, Model model) {
+
+		// Eliminación de vehículo
+		ingresoServiceI.eliminarIngresoPorId(Long.valueOf(ingresoId));
+
+		return "redirect:showIngresosView";
+
+	}
 
 }

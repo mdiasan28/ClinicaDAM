@@ -17,5 +17,7 @@ public interface IngresoServiceI {
 
 
 	List<Ingreso> findIngresosByPaciente(long idCliente);
+	
+	public void eliminarIngresoPorId(long IdMedico);
 
 }

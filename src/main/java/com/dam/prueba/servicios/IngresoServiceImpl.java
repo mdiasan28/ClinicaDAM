@@ -37,6 +37,12 @@ public class IngresoServiceImpl implements IngresoServiceI{
 		
 	}
 
+	@Override
+	public void eliminarIngresoPorId(long IdMedico) {
+		ingresoRepositorio.deleteById(IdMedico);
+		
+	}
+
 
 	
 
