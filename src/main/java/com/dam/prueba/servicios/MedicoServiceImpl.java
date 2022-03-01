@@ -9,6 +9,11 @@ import org.springframework.stereotype.Service;
 import com.dam.prueba.entidades.Medico;
 import com.dam.prueba.repositorios.MedicoRepositorio;
 
+/**
+ * 
+ * Servicios de medicos implementados
+ *
+ */
 @Service
 public class MedicoServiceImpl implements MedicoServiceI{
 

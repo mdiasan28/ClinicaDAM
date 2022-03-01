@@ -1,11 +1,14 @@
 package com.dam.prueba.entidades;
 
-
-
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+/**
+ * 
+ * Clase Medico Modelo que no realiza validaciones
+ *
+ */
 
 @Data @AllArgsConstructor @NoArgsConstructor
 public class MedicoModelo {

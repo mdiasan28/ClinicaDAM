@@ -8,6 +8,11 @@ import org.springframework.stereotype.Service;
 import com.dam.prueba.entidades.Paciente;
 import com.dam.prueba.repositorios.PacienteRepositorio;
 
+/**
+ * Servicios de pacientes implementados
+ * @author migue
+ *
+ */
 @Service
 public class PacienteServiceImpl implements PacienteServiceI{
 

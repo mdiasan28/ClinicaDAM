@@ -24,18 +24,22 @@ import com.dam.prueba.entidades.Paciente;
 import com.dam.prueba.entidades.PacienteModelo;
 import com.dam.prueba.servicios.PacienteServiceI;
 
+/**
+ * 
+ * Controlador de los pacientes
+ *
+ */
 @Controller
 public class PacienteController {
 
 	@Autowired
 	private PacienteServiceI pacienteServiceI;
 
-	@RequestMapping("/home")
-	@ResponseBody
-	public String home() {
-		return "hello world";
-	}
-
+	/**
+	 * Vista principal de los pacientes
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/showPacientesView")
 	public String mostrarPacientes(Model model) {
 
@@ -49,6 +53,12 @@ public class PacienteController {
 		return "showPacientes";
 	}
 
+	/**
+	 * Recoge los datos del paciente de la tabla y lo envía a la vista de editar
+	 * @param pacienteId modelo procedente de la tabla principal
+	 * @param model
+	 * @return vista editar
+	 */
 	@GetMapping("/editPacientesView")
 	public String editarPacientes(String pacienteId, Model model) {
 
@@ -68,6 +78,14 @@ public class PacienteController {
 
 		return "editPaciente";
 	}
+	
+	/**
+	 * Metodo que se encarga de editar el paciente a partir del modelo de la vista editar
+	 * @param Pacientemodelo
+	 * @param result
+	 * @return
+	 * @throws Exception
+	 */
 
 	@GetMapping("/actEditPaciente")
 	public String editarMedico(@Valid @ModelAttribute PacienteModelo Pacientemodelo, BindingResult result) throws Exception {
@@ -97,6 +115,13 @@ public class PacienteController {
 		return "redirect:showPacientesView";
 	}
 
+	/**
+	 * Metodo que se encarga de eliminar un paciente a travesde su id
+	 * @param pacienteId
+	 * @param model
+	 * @return
+	 */
+	
 	@PostMapping("/actDropPaciente")
 	public String eliminarPaciente(@RequestParam String pacienteId, Model model) {
 
@@ -106,6 +131,14 @@ public class PacienteController {
 		return "redirect:showPacientesView";
 
 	}
+	
+	/**
+	 * Metodo que se encarga de aniadir un paciente
+	 * @param Pacientemodelo
+	 * @param result
+	 * @return
+	 * @throws Exception
+	 */
 
 	@PostMapping("/actAddPaciente")
 	private String aniadirPaciente(@Valid @ModelAttribute PacienteModelo Pacientemodelo, BindingResult result)

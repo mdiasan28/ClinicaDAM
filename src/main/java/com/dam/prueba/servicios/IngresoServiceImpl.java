@@ -7,7 +7,11 @@ import org.springframework.stereotype.Service;
 
 import com.dam.prueba.entidades.Ingreso;
 import com.dam.prueba.repositorios.IngresoRepositorio;
-
+/**
+ * 
+ * Servicios implementados de ingresos
+ *
+ */
 @Service
 public class IngresoServiceImpl implements IngresoServiceI{
 

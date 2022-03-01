@@ -4,7 +4,11 @@ package com.dam.prueba.servicios;
 import java.util.List;
 
 import com.dam.prueba.entidades.Ingreso;
-
+/**
+ * 
+ * Servicios de ingresos
+ *
+ */
 
 public interface IngresoServiceI {
 	

@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.dam.prueba.entidades.Paciente;
 
+/**
+ * Servicios de pacientes
+ * @author migue
+ *
+ */
 
 public interface PacienteServiceI {
 

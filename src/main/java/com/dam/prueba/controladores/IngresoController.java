@@ -25,6 +25,12 @@ import com.dam.prueba.servicios.IngresoServiceI;
 import com.dam.prueba.servicios.MedicoServiceI;
 import com.dam.prueba.servicios.PacienteServiceI;
 
+/**
+ * 
+ * Controlador de los ingresos
+ *
+ */
+
 @Controller
 public class IngresoController {
 
@@ -35,6 +41,11 @@ public class IngresoController {
 	@Autowired
 	private MedicoServiceI medicoServiceI;
 
+	/**
+	 * Mostrar ingresos vista principal
+	 * @param model
+	 * @return Lista de ingresos en su vista principal
+	 */
 	@GetMapping("/showIngresosView")
 	public String mostraringresos(Model model) {
 
@@ -48,6 +59,12 @@ public class IngresoController {
 		return "showIngresos";
 	}
 
+	/**
+	 * Lista de ingresos por medico
+	 * @param medicomodelo es el medico que se recoge de modelo para obtener su codigo
+	 * @param model
+	 * @return devuelve la lista de ingresos que coinciden con el codigo del medico
+	 */
 	@PostMapping("/showIngresosMedicoView")
 	public String mostraringresosmedicos(@Valid @ModelAttribute MedicoModelo medicomodelo, Model model) {
 
@@ -60,6 +77,12 @@ public class IngresoController {
 
 		return "showIngresos";
 	}
+	
+	/**
+	 * Vista con los medicos a seleccionar
+	 * @param model
+	 * @return Vista que tiene cargado en un combobox todos los medicos
+	 */
 	
 	@GetMapping("/showIngresosMedicoPrev")
 	public String mostraringresosmedicosprev(Model model) {
@@ -74,6 +97,12 @@ public class IngresoController {
 		return "showIngresosMedicos";
 	}
 
+	/**
+	 * Vista de los ingresos que coinciden con un paciente
+	 * @param pacientemodelo paciente al que se le obtendrá el codigo
+	 * @param model
+	 * @return ingresos por paciente
+	 */
 	@PostMapping("/showIngresosPacienteView")
 	public String mostraringresospacientes(@Valid @ModelAttribute PacienteModelo pacientemodelo, Model model) {
 
@@ -87,6 +116,12 @@ public class IngresoController {
 		return "showIngresos";
 	}
 	
+	/**
+	 * Lista de pacientes cargados en un combobox
+	 * @param model
+	 * @return pacientes cargados
+	 */
+	
 	@GetMapping("/showIngresosPacientePrev")
 	public String mostraringresospacientesprev(Model model) {
 
@@ -99,6 +134,12 @@ public class IngresoController {
 
 		return "showIngresosPacientes";
 	}
+	
+	/**
+	 * Vista de aniadir ingresos que contiene los medicos y pacientes cargados
+	 * @param model
+	 * @return vista de aniadir ingresos
+	 */
 
 	@GetMapping("/actAddIngresoPrev")
 	private String aniadirIngresoPrev(Model model) {
@@ -114,6 +155,13 @@ public class IngresoController {
 
 	}
 
+	/**
+	 * Método que crea un nuevo ingreso
+	 * @param ingresomodelo
+	 * @param result
+	 * @return vista de ingresos
+	 * @throws Exception
+	 */
 	@PostMapping("/actAddIngreso")
 	private String aniadirIngreso(@Valid @ModelAttribute IngresoModelo ingresomodelo, BindingResult result)
 			throws Exception {
@@ -144,6 +192,12 @@ public class IngresoController {
 		return "redirect:showIngresosView";
 	}
 	
+	/**
+	 * Metodo que elimina un ingresos
+	 * @param ingresoId para eliminar
+	 * @param model
+	 * @return vista principal de ingresos
+	 */
 	@PostMapping("/actDropIngreso")
 	public String eliminarIngreso(@RequestParam String ingresoId, Model model) {
 

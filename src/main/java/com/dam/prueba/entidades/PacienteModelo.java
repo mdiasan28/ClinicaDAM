@@ -32,6 +32,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Clase PacienteModelo que no realiza modificaciones y es necesaria para la fecha
+ * @author migue
+ *
+ */
 
 @Data @AllArgsConstructor @NoArgsConstructor
 public class PacienteModelo {

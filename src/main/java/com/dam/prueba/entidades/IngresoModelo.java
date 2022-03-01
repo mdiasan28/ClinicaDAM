@@ -32,6 +32,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * 
+ * Clase ingreso modelo que no realiza validaciones
+ *
+ */
 @Data @AllArgsConstructor @NoArgsConstructor
 public class IngresoModelo {
 

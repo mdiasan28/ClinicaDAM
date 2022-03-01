@@ -31,7 +31,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+/**
+ * 
+ * Clase ingresos
+ *
+ */
 @Entity
 @Table(name = "ingresos")
 @Data @AllArgsConstructor @NoArgsConstructor

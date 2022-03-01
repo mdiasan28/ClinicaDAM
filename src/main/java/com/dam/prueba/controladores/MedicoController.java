@@ -17,13 +17,22 @@ import com.dam.prueba.entidades.Medico;
 import com.dam.prueba.entidades.MedicoModelo;
 import com.dam.prueba.servicios.MedicoServiceI;
 
+/**
+ * 
+ * Controlador de los medicos
+ *
+ */
 @Controller
 public class MedicoController {
 
 	@Autowired
 	private MedicoServiceI medicoServiceI;
 
-
+	/**
+	 * Vista principal de medicos
+	 * @param model
+	 * @return vista principal de medicos
+	 */
 	@GetMapping("/showMedicosView")
 	public String mostrarMedicos(Model model) {
 
@@ -36,13 +45,18 @@ public class MedicoController {
 
 		return "showMedicos";
 	}
-	
+
+	/**
+	 * Metodo que obtiene los datos de un medico de la tabla principal y envia los datos a su tabla de editar
+	 * @param medicoId que se recoge del boton de la tabla principal
+	 * @param model
+	 * @return va al metodo de editar el medico
+	 */
 	@GetMapping("/editMedicosView")
 	public String editarMedicos(String medicoId, Model model) {
 
 		// Obtención de pacientes
-		Medico m  = medicoServiceI.findMedicoByID(Long.valueOf(medicoId));
-		
+		Medico m = medicoServiceI.findMedicoByID(Long.valueOf(medicoId));
 
 		// Carga de datos al modelo
 		model.addAttribute("nombre", m.getNombre());
@@ -53,10 +67,17 @@ public class MedicoController {
 
 		return "editMedico";
 	}
-	
+
+	/**
+	 * Metodo que se encarga de comprobar los errores y editar el medico
+	 * @param medicomodelo
+	 * @param result
+	 * @return vista de medicos principal
+	 * @throws Exception
+	 */
 	@GetMapping("/actEditMedico")
 	public String editarMedico(@Valid @ModelAttribute Medico medicomodelo, BindingResult result) throws Exception {
-				
+
 		if (result.hasErrors()) {
 			throw new Exception("Parámetros de matriculación erróneos");
 		}
@@ -77,18 +98,23 @@ public class MedicoController {
 
 	}
 
-	
-
+	/**
+	 * Metodo que se encarga de aniadir un medico a partir de uno modelo procendente de la vista de aniadir
+	 * @param medicomodelo intermedio para aniadir un medico
+	 * @param result
+	 * @return vista principal de medicos
+	 * @throws Exception
+	 */
 	@PostMapping("/actAddMedico")
-	private String aniadirMedico(@Valid @ModelAttribute MedicoModelo medicomodelo, BindingResult result) throws Exception {
-		
+	private String aniadirMedico(@Valid @ModelAttribute MedicoModelo medicomodelo, BindingResult result)
+			throws Exception {
+
 		Medico m = new Medico();
 		m.setNombre(medicomodelo.getNombre());
 		m.setApellido(medicomodelo.getApellido());
 		m.setEspecialidad(medicomodelo.getEspecialidad());
 		m.setTelefono(medicomodelo.getTelefono());
-		
-		
+
 		if (result.hasErrors()) {
 			throw new Exception("Parámetros de matriculación erróneos");
 		} else {

@@ -4,10 +4,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * 
+ * Controlador de redirecciones de controladores y vistas
+ *
+ */
 @Controller
 @RequestMapping("*")
 public class SystemController {
 
+	/**
+	 * Si no existe una solicitud o estamos en el principio nos envia al index
+	 * @return
+	 */
 	// Capta cualquier solicitud
 	@GetMapping
 	public String showIndex() {
